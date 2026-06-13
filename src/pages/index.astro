@@ -1,11 +1,97 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// El frontmatter es solo para codigo que ejecuta en servidor (imports, apis, renderizado en servidor, etc), para scripts hacen falta etiqetas script.
 ---
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Prueba_Landpage</title>
+	<link rel="icon" type="image/png" href="/favicon.png" />
+</head>
 
-<Layout>
-	<Welcome />
-</Layout>
+<body>
+	<div class="videoFondo">
+		<video autoplay muted loop>
+			<source src="/videoPromo.mp4" type="video/mp4" />
+		</video>
+	</div>
+	<div class="logoLandpage">
+		<a href="/home" aria-label="Ir a la página de inicio" data-home-link>
+			<img id="logoBtnLandpage" src="/zocobgRemove.png" alt="Logo_zoco" />
+		</a>
+	</div>
+
+	<script>
+		import "../scripts/landpage_scripts.js";
+	</script>
+
+</body>
+
+<style>
+	body {
+		opacity: 1;
+		transition: opacity 1s ease;
+	}
+
+	body.is-fading {
+		opacity: 0;
+	}
+
+	.videoFondo {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		overflow: hidden;
+	}
+
+	video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: saturate(1) brightness(0.9); 
+	}
+
+	.videoFondo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3); /* Blanco con 30% de opacidad */
+  pointer-events: none; /* Permite hacer clic a través de la capa */
+}
+
+	.logoLandpage {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+
+	.logoLandpage a {
+		display: inline-block;
+	}
+
+	.logoLandpage img {
+		max-width: 450px;
+		width: 450%;
+		height: auto;
+		transform: scale(1);
+		transform-origin: center;
+		transition: transform 1.8s ease, filter 0.25s ease;
+		cursor: pointer;
+	}
+
+	.logoLandpage a:hover img {
+		transform: scale(1.7);
+	}
+
+	html{
+		scroll-behavior: smooth;
+		overflow: hidden;
+	}
+</style>
