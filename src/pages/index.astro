@@ -9,15 +9,40 @@
 </head>
 
 <body>
+	<div class="divSuperior">
+		<input id="menuToggle" class="menuCheckbox" type="checkbox" /><!--este es el boton hamburguesa que se ve en movil, y que al hacer click activa el checkbox y despliega el menu-->
+		<label class="menuToggle" for="menuToggle" aria-label="Abrir o cerrar menú">
+			<span></span>
+			<span></span>
+			<span></span>
+		</label>
+		<nav class="menuSuperior">
+			<ul class="menuSuperiorUl">
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">OPTICAL</a></li>
+				<li><a href="#">SUN</a></li>
+				<li><a href="#">ABOUT</a></li>
+			</ul>
+		</nav>
+		<div class="logoLandpage">
+			<img id="logoBtnLandpage" src="/zoco-logos-byn-rec.png" alt="Logo_zoco" />
+		</div>
+	</div>
+
+
 	<div class="videoFondo">
 		<video autoplay muted loop>
 			<source src="/videoPromo.mp4" type="video/mp4" />
 		</video>
 	</div>
-	<div class="logoLandpage">
-		<a href="/home" aria-label="Ir a la página de inicio" data-home-link>
-			<img id="logoBtnLandpage" src="/zocobgRemove.png" alt="Logo_zoco" />
-		</a>
+	<div class="divInferior">
+		segundo divç
+		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
+		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
 	</div>
 
 	<script>
@@ -27,71 +52,201 @@
 </body>
 
 <style>
-	body {
+
+@font-face {
+	font-family: 'HKNova';
+	src: url('/fonts/HKNova-Medium.ttf') format('truetype');
+}
+
+*, *::before, *::after { /* Reseteo universal para quitar márgenes y paddings ocultos */
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+body {
 		opacity: 1;
 		transition: opacity 1s ease;
+		overflow-x: hidden;
 	}
 
-	body.is-fading {
+body.is-fading {
 		opacity: 0;
+		
+	}
+.divSuperior {
+		position: fixed;
+		width: 100%;
+		z-index: 1;
 	}
 
-	.videoFondo {
+.menuCheckbox {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+.menuToggle {
+		display: none;
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		width: 2rem;
+		height: 3rem;
+		padding: 0.7rem 0.4rem;
+		cursor: pointer;
+		z-index: 3;
+		backdrop-filter: blur(10px);
+		border-radius: 0.75rem;
+	}
+
+.menuToggle span {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: #000;
+		border-radius: 999px;
+		margin: 0.32rem 0;
+		transition: transform 0.2s ease, opacity 0.2s ease;
+	}
+
+.menuSuperior {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 15vh;
+		z-index: 1;
+	}
+.videoFondo {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
 		z-index: -1;
 		overflow: hidden;
+		top: 0;
+  		left: 0;
 	}
 
-	video {
+video {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		filter: saturate(1) brightness(0.9); 
 	}
 
-	.videoFondo::after {
+.videoFondo::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.3); /* Blanco con 30% de opacidad */
+  background-color: rgba(255, 255, 255, 0.05); /* Blanco con 30% de opacidad */
   pointer-events: none; /* Permite hacer clic a través de la capa */
-}
-
-	.logoLandpage {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		text-align: center;
 	}
 
-	.logoLandpage a {
-		display: inline-block;
+.logoLandpage {
+	position: absolute;
+	padding-top:2vh;
+	left: 15%;
+	transform: translate(-50%);
+	text-align: center;
+	}
+
+.logoLandpage img {
+	max-width:400px; /*evita el desbordamiento en pantalla de pc*/
+	width: 60vw; /*imprescindible para el responsive del movil que sea en vw*/
+	transform: scale(1);
+	transform-origin: center; 
+	transition: transform 1.8s ease, filter 0.25s ease;
+	}
+
+.logoLandpage img::scroll-marker {
+		transform: scale(-1.1);
+	}
+
+.menuSuperiorUl {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	list-style: none;
+	height: 100%;
+	gap:3.5rem;
+	padding-left: 30rem;
+	font-family: 'HKNova', sans-serif;
+	font-size: 1.5rem;
+	}
+.menuSuperiorUl li a {
+	color: black;
+	text-decoration:none;
+}
+
+
+
+
+/* Estilos para pantallas de 768px o menos */
+@media screen and (max-width: 768px) {
+	.divSuperior {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 3;
+	}
+
+	.menuToggle {
+		display: block;
+	}
+
+	.menuSuperior {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		padding-top: 4.5rem;
+		background: rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(14px);
+		transform: translateY(-120%);
+		transition: transform 0.25s ease;
+		z-index: 2;
+	}
+
+	.menuCheckbox:checked ~ .menuSuperior {
+		transform: translateY(0);
+	}
+
+	.menuCheckbox:checked + .menuToggle span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.menuCheckbox:checked + .menuToggle span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.menuCheckbox:checked + .menuToggle span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	.menuSuperiorUl {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2rem;
+		padding: 5rem 1.25rem 1.5rem;
+	}
+
+	.logoLandpage {
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		padding-top: 2rem;
+		z-index: 2;
 	}
 
 	.logoLandpage img {
-		max-width: 450px;
-		width: 450%;
-		height: auto;
-		transform: scale(1);
-		transform-origin: center;
-		transition: transform 1.8s ease, filter 0.25s ease;
-		cursor: pointer;
+		width: min(70vw, 320px);
 	}
-
-	.logoLandpage a:hover img {
-		transform: scale(1.7);
-	}
-
-	html{
-		scroll-behavior: smooth;
-		overflow: hidden;
-	}
+}
 </style>
