@@ -1,0 +1,238 @@
+
+@font-face {
+	font-family: 'HKNova';
+	src: url('/fonts/HKNova-Medium.ttf') format('truetype');
+}
+
+*, *::before, *::after { /* Reseteo universal para quitar márgenes y paddings ocultos */
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+body {
+		opacity: 1;
+		transition: opacity 1s ease;
+		overflow-x: hidden;
+	}
+
+body.is-fading {
+		opacity: 0;
+		
+	}
+
+.divSupremo{
+    position: relative;
+    width: 100%;
+    height: 100vh; /* La portada ocupa toda la pantalla */
+}
+
+.divSuperior {
+    position: sticky;
+    top: 2rem;
+    width: 100%;
+    height: 20vh;
+    z-index: 10; /* Siempre por encima del video */
+    display: flex;        /* Activamos Flexbox */
+    align-items: center;  /* Centra verticalmente */
+    background: transparent; /* O el color que desees */
+    padding-left: 3.5rem; /* Alineamos con tu diseño original */
+    transition:background 0.4s ease;
+    padding-bottom: 2rem; /* Ajusta según tu diseño */
+    padding-top: 2rem; /* Ajusta según tu diseño */
+}
+
+/* Estado cuando el video ya se ha ido (añadido por el JS) */
+.divSuperior.scrolled {
+    background: rgba(0, 0, 0, 0.9); /* Fondo sólido para el menú */
+    -webkit-backdrop-filter: blur(10px);/* Para Safari */
+    backdrop-filter: blur(10px);
+}
+
+.menuCheckbox {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+.menuToggle {
+		display: none;
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		width: 2rem;
+		height: 3rem;
+		padding: 0.7rem 0.4rem;
+		cursor: pointer;
+		z-index: 3;
+        -webkit-backdrop-filter: blur(10px);/* Para Safari */
+		backdrop-filter: blur(10px);
+		border-radius: 0.75rem;
+	}
+
+.menuToggle span {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: whitesmoke;
+		border-radius: 999px;
+		margin: 0.32rem 0;
+		transition: transform 0.2s ease, opacity 0.2s ease;
+	}
+
+.menuSuperior {
+    position: static;   /* Ya no es fixed */
+    height: auto;
+    width: auto;
+	}
+.videoFondo {
+    position: absolute; /* Se posiciona relativo al .divSupremo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Detrás del header, pero dentro del divSupremo */
+	}
+
+video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: saturate(1) brightness(0.9); 
+	}
+
+.videoFondo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05); /* Blanco con 30% de opacidad */
+  pointer-events: none; /* Permite hacer clic a través de la capa */
+	}
+
+.videoFondoText {
+		position: absolute;
+		top: 70%;
+		left: 5%;
+		color: whitesmoke;
+		font-size: 3.5rem;
+		font-family: 'HKNova', sans-serif;
+		z-index: 1;
+
+	}
+
+
+.logoLandpage {
+    position: static; /* Ya no es absolute */
+    padding-top: 0;
+    order: -1;          /* Asegura que esté a la izquierda de todo */
+	}
+
+.logoLandpage img {
+	max-width:400px; /*evita el desbordamiento en pantalla de pc*/
+	width: 60vw; /*imprescindible para el responsive del movil que sea en vw*/
+	transform: scale(1);
+	transform-origin: center; 
+    display: block; /* Asegura que la imagen se comporte como bloque */
+	transition: transform 1.8s ease, filter 0.25s ease;
+	}
+
+.logoLandpage img::scroll-marker {
+		transform: scale(-1.1);
+	}
+
+.menuSuperiorUl {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	list-style: none;
+	height: 100%;
+	gap:3.5rem;
+	padding-left: 30rem;
+	font-family: 'HKNova', sans-serif;
+	font-size: 1rem;
+	}
+.menuSuperiorUl li a {
+	color: whitesmoke;
+	text-decoration:none;
+}
+
+.divInferior {
+    position: relative;
+    z-index: 5;
+    background: white; /* Color de fondo sólido para que tape el video al subir */
+    padding: 2rem;
+    }
+
+
+/* Estilos para pantallas de 768px o menos */
+@media screen and (max-width: 768px) {
+	.divSuperior {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 3;
+	}
+
+	.videoFondoText{
+		font-size: 2.5rem;
+	}
+
+	.menuToggle {
+		display: block;
+	}
+
+	.menuSuperior {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		padding-top: 4.5rem;
+		background: rgba(255, 255, 255, 0.4);
+        -webkit-backdrop-filter: blur(10px);/* Para Safari */
+		backdrop-filter: blur(14px);
+		transform: translateY(-120%);
+		transition: transform 0.25s ease;
+		z-index: 2;
+	}
+
+	.menuCheckbox:checked ~ .menuSuperior {
+		transform: translateY(0);
+	}
+
+	.menuCheckbox:checked + .menuToggle span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.menuCheckbox:checked + .menuToggle span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.menuCheckbox:checked + .menuToggle span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	.menuSuperiorUl {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2rem;
+		padding: 5rem 1.25rem 1.5rem;
+	}
+
+	.logoLandpage {
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		padding-top: 2rem;
+		z-index: 2;
+	}
+
+	.logoLandpage img {
+		width: min(70vw, 320px);
+	}
+}
