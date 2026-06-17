@@ -29,7 +29,7 @@ body.is-fading {
 
 .divSuperior {
     position: sticky;
-    top: 2rem;
+    top: 0rem;
     width: 100%;
     height: 20vh;
     z-index: 10; /* Siempre por encima del video */
@@ -39,12 +39,13 @@ body.is-fading {
     padding-left: 3.5rem; /* Alineamos con tu diseño original */
     transition:background 0.4s ease;
     padding-bottom: 2rem; /* Ajusta según tu diseño */
-    padding-top: 2rem; /* Ajusta según tu diseño */
+    padding-top: 2.5rem; /* Ajusta según tu diseño */
+
 }
 
 /* Estado cuando el video ya se ha ido (añadido por el JS) */
 .divSuperior.scrolled {
-    background: rgba(0, 0, 0, 0.9); /* Fondo sólido para el menú */
+    background: rgba(255, 255, 255, 0.5); /* Fondo sólido para el menú */
     -webkit-backdrop-filter: blur(10px);/* Para Safari */
     backdrop-filter: blur(10px);
 }
@@ -108,7 +109,7 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.05); /* Blanco con 30% de opacidad */
+  /*background-color: rgba(255, 255, 255, 0.05); /* Blanco con 30% de opacidad */
   pointer-events: none; /* Permite hacer clic a través de la capa */
 	}
 
@@ -159,6 +160,22 @@ video {
 	text-decoration:none;
 }
 
+.tituloSeccion {
+    font-family:'HKNova', sans-serif;
+    font-size: 7rem;
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin: 2rem 0 0 0; /* Espaciado superior e inferior */
+}
+
+.subtituloSeccion{
+    font-family:'HKNova', sans-serif;
+    font-size: 1.5rem;
+    color: #666; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin: 0.5rem 0 2rem 0; /* Espaciado superior e inferior */
+}
+
 .divInferior {
     position: relative;
     z-index: 5;
@@ -166,6 +183,44 @@ video {
     padding: 2rem;
     }
 
+
+.Gafa_cards{
+    display:flex;
+    gap: 2rem;
+    width: 100%;
+    height: auto;
+    padding: 2rem 2rem 2rem 2rem;
+    justify-content: center;
+}
+
+.ModeloPromo{
+	position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 2rem 2rem 2rem 2rem;
+}
+.ModeloPromoImg{
+    max-width: 90vw; /*evita el desbordamiento en pantalla de pc*/
+    width: 90vw; /*imprescindible para el responsive del movil que sea en vw*/
+    transform: scale(1);
+    transform-origin: center; 
+    display: block; /* Asegura que la imagen se comporte como bloque */
+    transition: transform 1.8s ease, filter 0.25s ease;
+	position: relative;
+	z-index: 1;
+}
+.Logo_zoco_montado{
+    position: absolute;
+    top: 85%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    max-width: 30vw; /*evita el desbordamiento en pantalla de pc*/
+    width: 30vw; /*imprescindible para el responsive del movil que sea en vw*/
+	z-index: 2;
+}
 
 /* Estilos para pantallas de 768px o menos */
 @media screen and (max-width: 768px) {
@@ -235,4 +290,13 @@ video {
 	.logoLandpage img {
 		width: min(70vw, 320px);
 	}
+
+    .ModeloPromoImg{
+    max-width: 400px; /*evita el desbordamiento en pantalla de pc*/
+    width: 60vw; /*imprescindible para el responsive del movil que sea en vw*/
+    transform: scale(1);
+    transform-origin: center; 
+    display: block; /* Asegura que la imagen se comporte como bloque */
+    transition: transform 1.8s ease, filter 0.25s ease;
+}
 }

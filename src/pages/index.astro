@@ -1,6 +1,7 @@
 ---
 // El frontmatter es solo para codigo que ejecuta en servidor (imports, apis, renderizado en servidor, etc), para scripts hacen falta etiqetas script.
 import Layout from '../layouts/Zoco_layout.astro';
+import Gafa_card from '../components/Gafa_card.astro';
 ---
 <Layout title="Inicio">
 	<div class="divSupremo">
@@ -33,12 +34,43 @@ import Layout from '../layouts/Zoco_layout.astro';
 		</div>
 	</div>
 
-	<div class="divInferior">
-		segundo divç
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+	<div>
+		<p class="tituloSeccion">Best Sellers</p>
+		<p class="subtituloSeccion">Descubre los modelos preferidos de ZOCO</p>
+	</div>
+
+	<div class="Gafa_cards">
+
+		<Gafa_card 
+			titulo="Nutmeg"
+			imagen="/public/sunLenses/Nutmeg.png"
+			precio="79.00€"
+		/>
+		<Gafa_card 
+			titulo="Ducat"
+			imagen="/public/sunLenses/Ducat.png"
+			precio="79.00€"
+		/>
+		<Gafa_card 
+			titulo="Parsley"
+			imagen="/public/sunLenses/Parsley.png"
+			precio="79.00€"
+		/>
+		<Gafa_card 
+			titulo="Scudo"
+			imagen="/public/sunLenses/Scudo.png"
+			precio="79.00€"
+		/>
+	</div>
+
+	<div>
+		<p class="tituloSeccion">New Arrivals</p>
+	</div>
+
+	<div class="ModeloPromo">
+		<img src="/public/Modelo/Modelo1.png" alt="ModeloPromo" class="ModeloPromoImg"/>
+		<img src="/public/zoco-logos-blancos-06.png" alt="Logo_Zoco" class="Logo_zoco_montado"/>
+	</div>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
 		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
 				lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
@@ -47,52 +79,7 @@ import Layout from '../layouts/Zoco_layout.astro';
 		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
 		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
-		<div>
-			tercer div
-					lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
-		</div>
-		<div>
-			cuarto duv:
-					lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
-		</div>
-
 	</div>
-
 	<script>
 		import "../scripts/landpage_scripts.js";
 	</script>

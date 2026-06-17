@@ -1,0 +1,45 @@
+---
+//Definición de datos del componente:
+interface Props{
+    titulo:string,
+    imagen:string,
+    precio:string,
+}
+
+const {titulo, imagen, precio} = Astro.props;
+---
+
+<div class="GafaCard">
+    <img src={imagen} alt={titulo} class="GafaImagen"/>
+    <div class="GafaInfo">
+        <h2 class="GafaTitulo">{titulo}</h2>
+        <p class="GafaPrecio">{precio}</p>
+    </div>
+</div>
+
+<style>
+    .GafaCard {
+        border: none;
+        background-color: white;
+        overflow: hidden;
+        width: rem;
+        height: 25rem;
+        transition: transform 0.3s ease;
+    }
+
+    .GafaTitulo, .GafaPrecio {
+        font-size: 1rem;
+        text-align: center;
+        margin: 0.5rem 0;
+        font-family:'HKNova', sans-serif;
+    }
+
+    .GafaCard:hover {
+        transform: scale(1.05);
+    }
+    .GafaCard img {
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
+    }
+</style>

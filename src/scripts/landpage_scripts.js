@@ -1,21 +1,33 @@
+// script para el scroll del menú, mantiene el menu y el logo visibles mientras el video/img o media de primer vistazo está en pantalla y cambia el color del menú cuando el video se va
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.divSuperior');
+    const triggerElement = document.querySelector('.divSupremo');
 
-//script de landpage
-const header = document.querySelector('.divSuperior');
-const triggerElement = document.querySelector('.divSupremo'); // Usamos el contenedor padre
+    if (!(header instanceof HTMLElement) || !(triggerElement instanceof HTMLElement)) {
+        return;
+    }
 
-const observerOptions = {
-    root: null,
-    threshold: 0.1 // Cuando el 10% del contenedor padre ha salido del viewport
-};
+    const updateHeaderState = () => {
+        const triggerBottom = triggerElement.offsetTop + triggerElement.offsetHeight;
+        const shouldBeScrolled = window.scrollY + header.offsetHeight >= triggerBottom;
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            header.classList.add('scrolled'); // Aquí cambias el color/opacidad
-        } else {
-            header.classList.remove('scrolled');
+        header.classList.toggle('scrolled', shouldBeScrolled);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+        if (ticking) {
+            return;
         }
-    });
-}, observerOptions);
 
-observer.observe(triggerElement);
+        ticking = true;
+        window.requestAnimationFrame(() => {
+            updateHeaderState();
+            ticking = false;
+        });
+    };
+
+    updateHeaderState();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateHeaderState);
+});
