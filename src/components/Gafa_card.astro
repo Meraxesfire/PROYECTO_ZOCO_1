@@ -25,9 +25,10 @@ const {titulo, imagen} = Astro.props;
         display: flex;
         flex-direction: column;
         transition: transform 0.3s ease;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     }
 
-    .GafaTitulo, .GafaPrecio {
+    .GafaTitulo {
         font-size: clamp(0.85rem, 2.5vw, 1rem);
         text-align: center;
         margin: 0.5rem 0;

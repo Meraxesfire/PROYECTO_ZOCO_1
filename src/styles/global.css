@@ -99,6 +99,10 @@ body.is-fading {
 	width: 100%;
 	height: auto;
 	display: block;
+    -webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+    border-radius: 0.75rem;
+     
 }
 
 .tooltip {
@@ -213,75 +217,73 @@ video {
 	text-decoration:none;
 }
 
-@media screen and (min-width: 769px) {
-	.divSuperior.scrolled {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: auto;
-		z-index: 20;
-		background: transparent;
-	}
+.divSuperior.scrolled {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	z-index: 20;
+	background: transparent;
+}
 
-	.divSuperior.scrolled .logoLandpage {
-		display: none;
-	}
+.divSuperior.scrolled .logoLandpage {
+	display: none;
+}
 
-	.divSuperior.scrolled .menuToggle,
-	.divSuperior.scrolled .ubicacionLogo {
-		display: block;
-		position: fixed;
-		top: 1rem;
-	}
+.divSuperior.scrolled .menuToggle,
+.divSuperior.scrolled .ubicacionLogo {
+	display: block;
+	position: fixed;
+	top: 1rem;
+}
 
-	.divSuperior.scrolled .menuToggle {
-		right: 4.6rem;
-	}
+.divSuperior.scrolled .menuToggle {
+	right: 4.6rem;
+}
 
-	.divSuperior.scrolled .ubicacionLogo {
-		right: 1rem;
-	}
+.divSuperior.scrolled .ubicacionLogo {
+	right: 1rem;
+}
 
-	.divSuperior.scrolled .menuToggle span {
-		background: #000;
-	}
+.divSuperior.scrolled .menuToggle span {
+	background: #000;
+}
 
-	.divSuperior.scrolled .menuSuperior {
-		position: fixed;
-		top: 4.2rem;
-		right: 1rem;
-		width: min(16rem, calc(100vw - 2rem));
-		padding: 1rem 0;
-		background: rgba(255, 255, 255, 0.92);
-		-webkit-backdrop-filter: blur(12px);
-		backdrop-filter: blur(12px);
-		border-radius: 0;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateY(-0.5rem);
-		/*transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;*/
-		z-index: 19;
-	}
+.divSuperior.scrolled .menuSuperior {
+	position: fixed;
+	top: 4.2rem;
+	right: 1rem;
+	width: min(16rem, calc(100vw - 2rem));
+	padding: 1rem 0;
+	background: rgba(255, 255, 255, 0.92);
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+	border-radius: 0;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-0.5rem);
+	/*transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;*/
+	z-index: 19;
+}
 
-	.divSuperior.scrolled .menuCheckbox:checked ~ .menuSuperior {
-		opacity: 1;
-		visibility: visible;
-		transform: translateY(0);
-	}
+.divSuperior.scrolled .menuCheckbox:checked ~ .menuSuperior {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
 
-	.divSuperior.scrolled .menuSuperiorUl {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 1rem;
-		padding: 0 1rem;
-		width: 100%;
-		font-size: 0.95rem;
-	}
+.divSuperior.scrolled .menuSuperiorUl {
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1rem;
+	padding: 0 1rem;
+	width: 100%;
+	font-size: 0.95rem;
+}
 
-	.divSuperior.scrolled .menuSuperiorUl li a {
-		color: black;
-	}
+.divSuperior.scrolled .menuSuperiorUl li a {
+	color: black;
 }
 
 .tituloSeccion {
@@ -294,7 +296,7 @@ video {
 
 .subtituloSeccion{
     font-family:'HKNova', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(0.5rem, 1.2vw, 1.5rem);
     color: #666; /* Color del texto */
     text-align: center; /* Centrar el texto */
     margin: 0.5rem 0 2rem 0; /* Espaciado superior e inferior */
@@ -316,23 +318,36 @@ video {
     height: auto;
     padding: 2rem 2rem 2rem 2rem;
     justify-content: center;
+
 }
 
 .ModeloPromo{
 	position: relative;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+	display:grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	justify-items: center;
+	align-items: center;
+    max-width: 100%;
     height: auto;
     padding: 2rem 2rem 2rem 2rem;
+    top: -80px;
+    gap: 2rem;
 }
+
+.ModeloPromoCol{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
 .ModeloPromoImg{
-    max-width: 90vw; /*evita el desbordamiento en pantalla de pc*/
-    width: 90vw; /*imprescindible para el responsive del movil que sea en vw*/
+	width: 100%;
+	max-width: 100%;
     transform: scale(1);
     transform-origin: center; 
     display: block; /* Asegura que la imagen se comporte como bloque */
+	height: auto;
+	object-fit: contain;
     transition: transform 1.8s ease, filter 0.25s ease;
 	position: relative;
 	z-index: 1;
@@ -347,14 +362,158 @@ video {
 	z-index: 2;
 }
 
-.footer{
+
+.vectorfreepik1{
+    position: relative;
+    top: 0;
+    left: 0;
+	width: 100%;
+	max-width: 100%;
+    height: auto;
+	display: block;
+    z-index: 0; /* Detrás de todo */
+}
+
+
+.NewArrivalsDiv{
     position: relative;
     width: 100%;
     height: auto;
-    background-color: #333; /* Color de fondo del footer */
+    top:-45px;
+}
+.vectorfreepik2{
+    position: relative;
+    margin-bottom: -10vw;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    z-index: 0; /* Detrás de todo */
+}
+
+.zonaColecciones{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    margin-top:8rem;
+}
+
+.coleccion1Div{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.coleccion1{
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    max-height: fit-content;
+    height: 700px;
+}
+
+
+.colection1Button{
+    position: absolute;
+    font-family:'HKNova', sans-serif;
+    top: 90%;
+    left: 50%;
+    width: 15%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: rgba(245, 245, 245, 0.7); /* Color de fondo del botón */
+    border-color: #333; /* Color del borde del botón */
+    color: #333; /* Color del texto del botón */
+    border: none;
+    cursor: pointer;
+    z-index: 3; /* Asegura que el botón esté por encima del video */
+}
+
+.colection1Button:hover{
+    background-color: rgba(51, 51, 51,0.2); /* Color de fondo del botón al pasar el mouse */
+    color: whitesmoke; /* Color del texto del botón al pasar el mouse */
+}
+
+
+.coleccion2Div{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.coleccion2{
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    max-height: fit-content;
+    height: 700px;
+}
+
+.colection2Button{
+    position: absolute;
+    font-family:'HKNova', sans-serif;
+    top: 90%;
+    left: 50%;
+    width: 15%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: rgba(245, 245, 245, 0.7); /* Color de fondo del botón */
+    border-color: #333; /* Color del borde del botón */
+    color: rgb(51, 51, 51); /* Color del texto del botón */
+    border: none;
+    cursor: pointer;
+    z-index: 3; /* Asegura que el botón esté por encima del video */
+}
+
+.colection2Button:hover{
+    background-color: rgba(51, 51, 51,0.2); /* Color de fondo del botón al pasar el mouse */
+    color: whitesmoke; /* Color del texto del botón al pasar el mouse */
+}  
+
+
+footer{
+    display:flex;
+    margin-top:10vh;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 50vh;
+    background-color: #FFAD5B;/* Color de fondo del footer */
     color: #fff; /* Color del texto */
-    text-align: center; /* Centrar el contenido */
     padding: 2rem 1rem; /* Espaciado interno */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.logoFooter{
+    position: absolute;
+    width: 50%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.emailMarketing{
+    position: absolute;
+    font-family:'HKNova', sans-serif;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: 400px;
+    text-align: flex-start;
 }
 
 /* Estilos para pantallas de 768px o menos */
@@ -419,8 +578,71 @@ video {
 		font-size: 0.9rem;
 	}
 
+	.divSuperior.scrolled {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 3;
+	}
+
 	.divSuperior.scrolled .logoLandpage {
 		display: none;
+	}
+
+	.divSuperior.scrolled .menuToggle {
+		display: block;
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
+	}
+
+	.divSuperior.scrolled .ubicacionLogo {
+		display: none;
+	}
+
+	.divSuperior.scrolled .menuSuperior {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		padding-top: 4.5rem;
+		background: rgba(255, 255, 255, 0.4);
+		-webkit-backdrop-filter: blur(10px);/* Para Safari */
+		backdrop-filter: blur(14px);
+		transform: translateY(-120%);
+		transition: transform 0.25s ease;
+		z-index: 2;
+	}
+
+	.divSuperior.scrolled .menuSuperiorUl {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2rem;
+		padding: 4.5rem 1.25rem 1.25rem;
+		font-size: 0.9rem;
+	}
+
+	.divSuperior.scrolled .menuCheckbox:checked ~ .menuSuperior {
+		transform: translateY(0);
+	}
+
+	.divSuperior.scrolled .menuToggle span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.divSuperior.scrolled .menuToggle span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.divSuperior.scrolled .menuToggle span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	.divSuperior.scrolled .menuToggle span {
+		background: #000;
 	}
 
 	.logoLandpage {
@@ -455,12 +677,13 @@ video {
 		max-width: calc(50% - 0.5rem);
 	}
 
-    .ModeloPromoImg{
-    max-width: 400px; /*evita el desbordamiento en pantalla de pc*/
-    width: 60vw; /*imprescindible para el responsive del movil que sea en vw*/
-    transform: scale(1);
-    transform-origin: center; 
-    display: block; /* Asegura que la imagen se comporte como bloque */
-    transition: transform 1.8s ease, filter 0.25s ease;
-}
+	.ModeloPromo{
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		padding: 1rem;
+	}
+
+	.ModeloPromoImg{
+		width: min(100%, 90vw);
+	}
 }

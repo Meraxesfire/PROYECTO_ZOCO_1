@@ -14,7 +14,7 @@ import Footer_component from '../components/Footer_component.astro';
 				<span></span>
 			</label>
 			<span class="ubicacionLogo tooltip" data-tooltip="Encuentra tu tienda más cercana">
-				<img src="/ubicacion.png" alt="Ubicacion" />
+				<a href="#"><img src="/ubicacion.png" alt="Ubicacion" /></a>
 			</span>
 			<nav class="menuSuperior">
 				<ul class="menuSuperiorUl">
@@ -63,18 +63,73 @@ import Footer_component from '../components/Footer_component.astro';
 		/>
 	</div>
 
-	<div>
+	<img src="/image.png" class="vectorfreepik1" alt="imagen de freepik"/>
+
+	<div class="NewArrivalsDiv">
 		<h1 class="tituloSeccion">New Arrivals</h1>
+		<p class="subtituloSeccion">Descubre los nuevos modelos de ZOCO</p>
 	</div>
 
 	<div class="ModeloPromo">
-		<img src="/public/Modelo/Modelo1.png" alt="ModeloPromo" class="ModeloPromoImg"/>
+		<div class="ModeloPromoCol">
+			<img src="/public/Modelo/modelo1Col.png" alt="ModeloPromo" data-hover="promo1" class="ModeloPromoImg Promo1"/>
+		</div>
+		<div class="ModeloPromoCol">
+			<img src="/public/Modelo/modelo2Col.png" alt="ModeloPromo" data-hover="promo2" class="ModeloPromoImg Promo2"/>
+		</div>
 		<img src="/public/zoco-logos-blancos-06.png" alt="Logo_Zoco" class="Logo_zoco_montado"/>
 	</div>
-		<h1>ZOCOLECTIONS</h1>
+
+	<div class="Gafa_cards">
+
+		<Gafa_card 
+			titulo="Nutmeg"
+			imagen="/public/sunLenses/Nutmeg.png"
+		/>
+		<Gafa_card 
+			titulo="Ducat"
+			imagen="/public/sunLenses/Ducat.png"
+		/>
+		<Gafa_card 
+			titulo="Parsley"
+			imagen="/public/sunLenses/Parsley.png"
+		/>
+		<Gafa_card 
+			titulo="Scudo"
+			imagen="/public/sunLenses/Scudo.png"
+		/>
+
+	</div>
+			
+	<img src="/image.png" class="vectorfreepik2" alt="imagen de freepik"/>
+	<div class="zonaColecciones">
+		<h1 class="tituloSeccion">Zocollections</h1>
+		<div class="coleccion1Div">
+			<video class="coleccion1" autoplay muted loop>
+				<source src="/newColection1.mp4" type="video/mp4" />
+			</video>
+			<button class="colection1Button">See more</button>
+		</div>
+
+		<div class="coleccion2Div">
+			<video class="coleccion2" autoplay muted loop>
+				<source src="/newColection2.mp4" type="video/mp4" />
+			</video>
+			<button class="colection2Button">See more</button>
+		</div>
 	</div>
 
 
+
+	<footer>
+		<img src="/public/zoco-logos-blanco.png" alt="Logo_zoco" class="logoFooter"/>
+		<div class="emailMarketing">
+			<p>Subscribe to our newsletter</p>
+			<input type="email" placeholder="Enter your email" />
+			<button>Subscribe</button>
+		
+		</div>
+	</footer>
 
 	<script>
 		import "../scripts/landpage_scripts.js";

@@ -31,3 +31,36 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', updateHeaderState);
 });
+
+//SCRIPT PARA EL HOVER DE LAS IMAGENES DE PROMOCION, CAMBIA LA IMAGEN AL HACER HOVER Y VUELVE A LA ORIGINAL CUANDO SE QUITA EL HOVER
+
+const imagenPromo1 = document.querySelector('.Promo1');
+const imagenPromo2 = document.querySelector('.Promo2');
+
+const rutaOriginal1 = '/Modelo/modelo1Col.png';
+const rutaHover1 = '/opticalLenses/gafaoptica.png';
+
+const rutaOriginal2 = '/Modelo/modelo2Col.png';
+const rutaHover2 = '/sunLenses/Nutmeg.png';
+
+if (
+    imagenPromo1 instanceof HTMLImageElement &&
+    imagenPromo2 instanceof HTMLImageElement &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches
+) {
+    imagenPromo1.addEventListener('mouseenter', () => {
+        imagenPromo1.src = rutaHover1;
+    });
+
+imagenPromo1.addEventListener('mouseleave', () => {
+    imagenPromo1.src = rutaOriginal1;
+});
+
+imagenPromo2.addEventListener('mouseenter', () => {
+    imagenPromo2.src = rutaHover2;
+});
+
+imagenPromo2.addEventListener('mouseleave', () => {
+    imagenPromo2.src = rutaOriginal2;
+});
+}
