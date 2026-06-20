@@ -16,6 +16,12 @@ body {
 		overflow-x: hidden;
 	}
 
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
 body.is-fading {
 		opacity: 0;
 		
@@ -330,8 +336,9 @@ video {
     max-width: 100%;
     height: auto;
     padding: 2rem 2rem 2rem 2rem;
-    top: -80px;
+    top: clamp(-2.5rem, -4vw, -1rem);
     gap: 2rem;
+	z-index: 1;
 }
 
 .ModeloPromoCol{
@@ -379,16 +386,17 @@ video {
     position: relative;
     width: 100%;
     height: auto;
-    top:-45px;
+	margin-top: clamp(0.75rem, 2.8vw, 2rem);
+	z-index: 2;
 }
 .vectorfreepik2{
     position: relative;
-    margin-bottom: -10vw;
+	margin-bottom: 0;
     width: 100%;
     max-width: 100%;
     height: auto;
     display: block;
-    z-index: 0; /* Detrás de todo */
+	z-index: 0;
 }
 
 .zonaColecciones{
@@ -398,7 +406,12 @@ video {
     display:flex;
     flex-direction: column;
     gap:2rem;
-    margin-top:8rem;
+	margin-top: clamp(0.75rem, 2.8vw, 2rem);
+}
+
+.NewArrivalsDiv .tituloSeccion,
+.zonaColecciones .tituloSeccion {
+	margin-top: 0;
 }
 
 .coleccion1Div{
@@ -524,6 +537,9 @@ footer{
 		left: 0;
 		width: 100%;
 		height: auto;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
 		z-index: 3;
 	}
 
@@ -533,6 +549,13 @@ footer{
 
 	.menuToggle {
 		display: block;
+		position: fixed;
+		top: 0.85rem;
+		right: max(0.75rem, env(safe-area-inset-right));
+		width: 2.5rem;
+		height: 2.5rem;
+		padding: 0.55rem 0.45rem;
+		z-index: 41;
 	}
 
 	.menuToggle span {
@@ -540,26 +563,42 @@ footer{
 	}
 
 	.menuSuperior {
-		position: absolute;
+		position: fixed;
 		top: 0;
-		left: 0;
+		left: 50%;
+		right: auto;
 		width: 100%;
+		max-width: none;
 		height: auto;
-		padding-top: 4.5rem;
+		flex: none;
+		display: block;
+		padding-top: 0;
 		background: rgba(255, 255, 255, 0.4);
         -webkit-backdrop-filter: blur(10px);/* Para Safari */
 		backdrop-filter: blur(14px);
-		transform: translateY(-120%);
-		transition: transform 0.25s ease;
-		z-index: 2;
+		transform: translate(-50%, -120%);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		max-height: 70vh;
+		overflow-y: auto;
+		transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+		z-index: 40;
 	}
 
+    .menuSuperiorUl li a{
+        color:#000;
+    }
+
 	.menuCheckbox:checked ~ .menuSuperior {
-		transform: translateY(0);
+		transform: translate(-50%, 0);
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
 	}
 
 	.menuCheckbox:checked + .menuToggle span:nth-child(1) {
-		transform: translateY(7px) rotate(45deg);
+		transform: translateY(7.5px) rotate(45deg);
 	}
 
 	.menuCheckbox:checked + .menuToggle span:nth-child(2) {
@@ -567,15 +606,28 @@ footer{
 	}
 
 	.menuCheckbox:checked + .menuToggle span:nth-child(3) {
-		transform: translateY(-7px) rotate(-45deg);
+		transform: translateY(-7.5px) rotate(-45deg);
 	}
 
 	.menuSuperiorUl {
 		flex-direction: column;
-		align-items: flex-start;
-		gap: 2rem;
-		padding: 4.5rem 1.25rem 1.25rem;
-		font-size: 0.9rem;
+		justify-content: center;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 0.85rem 1rem;
+		padding-right: 1rem;
+		min-height: 30vh;
+		font-size: 1.5rem;
+		text-align: center;
+	}
+
+	.menuSuperiorUl li {
+		width: 100%;
+	}
+
+	.menuSuperiorUl li a {
+		display: block;
+		width: 100%;
 	}
 
 	.divSuperior.scrolled {
@@ -594,8 +646,8 @@ footer{
 	.divSuperior.scrolled .menuToggle {
 		display: block;
 		position: fixed;
-		top: 1rem;
-		right: 1rem;
+		top: 0.85rem;
+		right: max(0.75rem, env(safe-area-inset-right));
 	}
 
 	.divSuperior.scrolled .ubicacionLogo {
@@ -603,42 +655,58 @@ footer{
 	}
 
 	.divSuperior.scrolled .menuSuperior {
-		position: absolute;
+		position: fixed;
 		top: 0;
-		left: 0;
+		left: 50%;
+		right: auto;
 		width: 100%;
+		max-width: none;
 		height: auto;
-		padding-top: 4.5rem;
+		flex: none;
+		display: block;
+		padding-top: 0;
 		background: rgba(255, 255, 255, 0.4);
 		-webkit-backdrop-filter: blur(10px);/* Para Safari */
 		backdrop-filter: blur(14px);
-		transform: translateY(-120%);
-		transition: transform 0.25s ease;
-		z-index: 2;
+		transform: translate(-50%, -120%);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		max-height: 70vh;
+		overflow-y: auto;
+		transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+		z-index: 40;
 	}
 
 	.divSuperior.scrolled .menuSuperiorUl {
 		flex-direction: column;
-		align-items: flex-start;
-		gap: 2rem;
-		padding: 4.5rem 1.25rem 1.25rem;
-		font-size: 0.9rem;
+		justify-content: center;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 0.85rem 1rem;
+		padding-right: 1rem;
+		min-height: 30vh;
+		font-size: 1.5rem;
+		text-align: center;
 	}
 
 	.divSuperior.scrolled .menuCheckbox:checked ~ .menuSuperior {
-		transform: translateY(0);
+		transform: translate(-50%, 0);
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
 	}
 
-	.divSuperior.scrolled .menuToggle span:nth-child(1) {
-		transform: translateY(7px) rotate(45deg);
+	.divSuperior.scrolled .menuCheckbox:checked + .menuToggle span:nth-child(1) {
+		transform: translateY(7.5px) rotate(45deg);
 	}
 
-	.divSuperior.scrolled .menuToggle span:nth-child(2) {
+	.divSuperior.scrolled .menuCheckbox:checked + .menuToggle span:nth-child(2) {
 		opacity: 0;
 	}
 
-	.divSuperior.scrolled .menuToggle span:nth-child(3) {
-		transform: translateY(-7px) rotate(-45deg);
+	.divSuperior.scrolled .menuCheckbox:checked + .menuToggle span:nth-child(3) {
+		transform: translateY(-7.5px) rotate(-45deg);
 	}
 
 	.divSuperior.scrolled .menuToggle span {
