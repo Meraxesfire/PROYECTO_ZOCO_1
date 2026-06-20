@@ -1,0 +1,13 @@
+---
+	//sacar año actual para que cambie automaticamente en el footer sin tener que tocar el codigo cada año
+  const currentYear = new Date().getFullYear();
+
+  import '../styles/global.css'; // Importa el archivo CSS global para que los estilos se apliquen a toda la página
+---
+
+<footer class="footer">
+		<div class="contacto">
+			<img class="logoFooter" src="/zocobgRemove.png" alt="Logo_zoco"/>
+			<p class="copyright">© {currentYear} Zoco. All rights reserved.</p>
+		</div>
+</footer>

@@ -2,6 +2,7 @@
 // El frontmatter es solo para codigo que ejecuta en servidor (imports, apis, renderizado en servidor, etc), para scripts hacen falta etiqetas script.
 import Layout from '../layouts/Zoco_layout.astro';
 import Gafa_card from '../components/Gafa_card.astro';
+import Footer_component from '../components/Footer_component.astro';
 ---
 <Layout title="Inicio">
 	<div class="divSupremo">
@@ -12,12 +13,15 @@ import Gafa_card from '../components/Gafa_card.astro';
 				<span></span>
 				<span></span>
 			</label>
+			<span class="ubicacionLogo tooltip" data-tooltip="Encuentra tu tienda más cercana">
+				<img src="/ubicacion.png" alt="Ubicacion" />
+			</span>
 			<nav class="menuSuperior">
 				<ul class="menuSuperiorUl">
-					<li><a href="#">HOME</a></li>
-					<li><a href="#">OPTICAL</a></li>
+					<li><a href="/optical">OPTICAL</a></li>
 					<li><a href="#">SUN</a></li>
 					<li><a href="#">ABOUT</a></li>
+					<li><a href="/stores">STORES</a></li>
 				</ul>
 			</nav>
 			<div class="logoLandpage">
@@ -35,7 +39,7 @@ import Gafa_card from '../components/Gafa_card.astro';
 	</div>
 
 	<div>
-		<p class="tituloSeccion">Best Sellers</p>
+		<h1 class="tituloSeccion">Best Sellers</h1>
 		<p class="subtituloSeccion">Descubre los modelos preferidos de ZOCO</p>
 	</div>
 
@@ -44,42 +48,34 @@ import Gafa_card from '../components/Gafa_card.astro';
 		<Gafa_card 
 			titulo="Nutmeg"
 			imagen="/public/sunLenses/Nutmeg.png"
-			precio="79.00€"
 		/>
 		<Gafa_card 
 			titulo="Ducat"
 			imagen="/public/sunLenses/Ducat.png"
-			precio="79.00€"
 		/>
 		<Gafa_card 
 			titulo="Parsley"
 			imagen="/public/sunLenses/Parsley.png"
-			precio="79.00€"
 		/>
 		<Gafa_card 
 			titulo="Scudo"
 			imagen="/public/sunLenses/Scudo.png"
-			precio="79.00€"
 		/>
 	</div>
 
 	<div>
-		<p class="tituloSeccion">New Arrivals</p>
+		<h1 class="tituloSeccion">New Arrivals</h1>
 	</div>
 
 	<div class="ModeloPromo">
 		<img src="/public/Modelo/Modelo1.png" alt="ModeloPromo" class="ModeloPromoImg"/>
 		<img src="/public/zoco-logos-blancos-06.png" alt="Logo_Zoco" class="Logo_zoco_montado"/>
 	</div>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
-				lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos maiores illum architecto est ratione accusantium! Magnam explicabo error ullam. 
-		Non explicabo, excepturi ut minima eveniet exercitationem nihil in. Est, aliquid?
+		<h1>ZOCOLECTIONS</h1>
 	</div>
+
+
+
 	<script>
 		import "../scripts/landpage_scripts.js";
 	</script>

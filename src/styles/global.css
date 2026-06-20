@@ -34,6 +34,7 @@ body.is-fading {
     height: 20vh;
     z-index: 10; /* Siempre por encima del video */
     display: flex;        /* Activamos Flexbox */
+	justify-content: space-between;
     align-items: center;  /* Centra verticalmente */
     background: transparent; /* O el color que desees */
     padding-left: 3.5rem; /* Alineamos con tu diseño original */
@@ -45,9 +46,9 @@ body.is-fading {
 
 /* Estado cuando el video ya se ha ido (añadido por el JS) */
 .divSuperior.scrolled {
-    background: rgba(255, 255, 255, 0.5); /* Fondo sólido para el menú */
-    -webkit-backdrop-filter: blur(10px);/* Para Safari */
-    backdrop-filter: blur(10px);
+	background: transparent;
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
 }
 
 .menuCheckbox {
@@ -75,17 +76,65 @@ body.is-fading {
 		display: block;
 		height: 2px;
 		width: 100%;
-		background: whitesmoke;
+		background: rgb(245, 245, 245, 0.1);
 		border-radius: 999px;
 		margin: 0.32rem 0;
 		transition: transform 0.2s ease, opacity 0.2s ease;
 	}
 
+.ubicacionLogo {
+	display: none;
+	width: 3rem;
+	height: auto;
+	object-fit: contain;
+	z-index: 3;
+	position: absolute;
+	right: 1rem;
+	top: 1.15rem;
+	pointer-events: auto;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	}
+
+.ubicacionLogo img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.tooltip {
+	position: relative; /* Necesario para posicionar el 
+    tooltip y que no aparezca tipo block cuando la pantalla es más pequeña */
+    }
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  font-family: 'HKNova', sans-serif;
+  max-width: 4.8rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  position: absolute; 
+  top: 105%; 
+  left: 50%; 
+  transform: translateX(-50%);
+  background: #000; 
+  color: #fff; 
+  padding: 4px 8px; 
+  border-radius: 4px;
+  font-size: 12px; 
+  white-space: normal; 
+  z-index: 10;
+}
+
 .menuSuperior {
     position: static;   /* Ya no es fixed */
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
     height: auto;
-    width: auto;
+	width: auto;
 	}
+
+    
 .videoFondo {
     position: absolute; /* Se posiciona relativo al .divSupremo */
     top: 0;
@@ -118,7 +167,9 @@ video {
 		top: 70%;
 		left: 5%;
 		color: whitesmoke;
-		font-size: 3.5rem;
+		font-size: clamp(1.8rem, 5vw, 3.5rem);
+		line-height: 1.1;
+		max-width: 90%;
 		font-family: 'HKNova', sans-serif;
 		z-index: 1;
 
@@ -146,23 +197,96 @@ video {
 
 .menuSuperiorUl {
 	display: flex;
-	justify-content: left;
+	justify-content: flex-end;
 	align-items: center;
 	list-style: none;
 	height: 100%;
 	gap:3.5rem;
-	padding-left: 30rem;
+	margin-left: 0;
+	padding-right: 3.5rem;
+	padding-left: 0;
 	font-family: 'HKNova', sans-serif;
-	font-size: 1rem;
+	font-size: clamp(0.85rem, 1.4vw, 1rem);
 	}
 .menuSuperiorUl li a {
 	color: whitesmoke;
 	text-decoration:none;
 }
 
+@media screen and (min-width: 769px) {
+	.divSuperior.scrolled {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 20;
+		background: transparent;
+	}
+
+	.divSuperior.scrolled .logoLandpage {
+		display: none;
+	}
+
+	.divSuperior.scrolled .menuToggle,
+	.divSuperior.scrolled .ubicacionLogo {
+		display: block;
+		position: fixed;
+		top: 1rem;
+	}
+
+	.divSuperior.scrolled .menuToggle {
+		right: 4.6rem;
+	}
+
+	.divSuperior.scrolled .ubicacionLogo {
+		right: 1rem;
+	}
+
+	.divSuperior.scrolled .menuToggle span {
+		background: #000;
+	}
+
+	.divSuperior.scrolled .menuSuperior {
+		position: fixed;
+		top: 4.2rem;
+		right: 1rem;
+		width: min(16rem, calc(100vw - 2rem));
+		padding: 1rem 0;
+		background: rgba(255, 255, 255, 0.92);
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+		border-radius: 0;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-0.5rem);
+		/*transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;*/
+		z-index: 19;
+	}
+
+	.divSuperior.scrolled .menuCheckbox:checked ~ .menuSuperior {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.divSuperior.scrolled .menuSuperiorUl {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 0 1rem;
+		width: 100%;
+		font-size: 0.95rem;
+	}
+
+	.divSuperior.scrolled .menuSuperiorUl li a {
+		color: black;
+	}
+}
+
 .tituloSeccion {
     font-family:'HKNova', sans-serif;
-    font-size: 7rem;
+    font-size: clamp(2rem, 6vw, 7rem); /* "clamp()" Ajusta el tamaño de fuente según el ancho de la pantalla y loe scala en trasición */
     color: #333; /* Color del texto */
     text-align: center; /* Centrar el texto */
     margin: 2rem 0 0 0; /* Espaciado superior e inferior */
@@ -170,7 +294,7 @@ video {
 
 .subtituloSeccion{
     font-family:'HKNova', sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     color: #666; /* Color del texto */
     text-align: center; /* Centrar el texto */
     margin: 0.5rem 0 2rem 0; /* Espaciado superior e inferior */
@@ -186,6 +310,7 @@ video {
 
 .Gafa_cards{
     display:flex;
+	flex-wrap: wrap;
     gap: 2rem;
     width: 100%;
     height: auto;
@@ -222,6 +347,16 @@ video {
 	z-index: 2;
 }
 
+.footer{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #333; /* Color de fondo del footer */
+    color: #fff; /* Color del texto */
+    text-align: center; /* Centrar el contenido */
+    padding: 2rem 1rem; /* Espaciado interno */
+}
+
 /* Estilos para pantallas de 768px o menos */
 @media screen and (max-width: 768px) {
 	.divSuperior {
@@ -234,11 +369,15 @@ video {
 	}
 
 	.videoFondoText{
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 
 	.menuToggle {
 		display: block;
+	}
+
+	.menuToggle span {
+		background: #000;
 	}
 
 	.menuSuperior {
@@ -276,7 +415,12 @@ video {
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 2rem;
-		padding: 5rem 1.25rem 1.5rem;
+		padding: 4.5rem 1.25rem 1.25rem;
+		font-size: 0.9rem;
+	}
+
+	.divSuperior.scrolled .logoLandpage {
+		display: none;
 	}
 
 	.logoLandpage {
@@ -289,6 +433,26 @@ video {
 
 	.logoLandpage img {
 		width: min(70vw, 320px);
+	}
+
+    .tituloSeccion {
+		font-size: 2.5rem; /* Ajusta el tamaño de fuente para móviles */
+		line-height: 1.1;
+    }
+
+	.subtituloSeccion{
+		font-size: 1rem;
+		line-height: 1.4;
+	}
+
+	.Gafa_cards{
+		gap: 1rem;
+		padding: 1rem;
+	}
+
+	.GafaCard{
+		flex: 1 1 calc(50% - 0.5rem);
+		max-width: calc(50% - 0.5rem);
 	}
 
     .ModeloPromoImg{

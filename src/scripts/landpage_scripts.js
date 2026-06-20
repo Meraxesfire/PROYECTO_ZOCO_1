@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateHeaderState = () => {
         const triggerBottom = triggerElement.offsetTop + triggerElement.offsetHeight;
-        const shouldBeScrolled = window.scrollY + header.offsetHeight >= triggerBottom;
+        const shouldBeScrolled = window.scrollY >= triggerBottom;
 
         header.classList.toggle('scrolled', shouldBeScrolled);
     };
