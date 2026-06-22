@@ -1,4 +1,4 @@
-// script para el scroll del menú, mantiene el menu y el logo visibles mientras el video/img o media de primer vistazo está en pantalla y cambia el color del menú cuando el video se va
+// script para añadir la clase "scrolled" al header cuando se hace scroll más allá del elemento trigger
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.divSuperior');
     const triggerElement = document.querySelector('.divSupremo');
@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const updateHeaderState = () => {
-        const triggerBottom = triggerElement.offsetTop + triggerElement.offsetHeight;
+    const updateHeaderState = () => { // Declara una función que recalcula el estado del header.
+        const triggerBottom = triggerElement.offsetTop + triggerElement.offsetHeight;  //Calcula la posición final vertical del bloque trigger (top + alto).
         const shouldBeScrolled = window.scrollY >= triggerBottom;
 
         header.classList.toggle('scrolled', shouldBeScrolled);
@@ -52,15 +52,15 @@ if (
         imagenPromo1.src = rutaHover1;
     });
 
-imagenPromo1.addEventListener('mouseleave', () => {
-    imagenPromo1.src = rutaOriginal1;
-});
+    imagenPromo1.addEventListener('mouseleave', () => {
+        imagenPromo1.src = rutaOriginal1;
+    });
 
-imagenPromo2.addEventListener('mouseenter', () => {
-    imagenPromo2.src = rutaHover2;
-});
+    imagenPromo2.addEventListener('mouseenter', () => {
+        imagenPromo2.src = rutaHover2;
+    });
 
-imagenPromo2.addEventListener('mouseleave', () => {
-    imagenPromo2.src = rutaOriginal2;
-});
+    imagenPromo2.addEventListener('mouseleave', () => {
+        imagenPromo2.src = rutaOriginal2;
+    });
 }

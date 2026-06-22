@@ -3,6 +3,19 @@
 import Layout from '../layouts/Zoco_layout.astro';
 import Gafa_card from '../components/Gafa_card.astro';
 import Footer_component from '../components/Footer_component.astro';
+import { supabase } from '../lib/supabase';
+
+const { data: gafas, error } = await supabase
+  .from('gafas')
+  .select(`
+    id,
+    nombre,
+    gafas_img ( url, posicion )
+  `);
+
+if (error) {
+  console.error("Error cargando el catálogo:", error.message);
+}
 ---
 <Layout title="Inicio">
 	<div class="divSupremo">
@@ -63,7 +76,7 @@ import Footer_component from '../components/Footer_component.astro';
 		/>
 	</div>
 
-	<img src="/image.png" class="vectorfreepik1" alt="imagen de freepik"/>
+
 
 	<div class="NewArrivalsDiv">
 		<h1 class="tituloSeccion">New Arrivals</h1>
@@ -100,8 +113,6 @@ import Footer_component from '../components/Footer_component.astro';
 		/>
 
 	</div>
-			
-	<img src="/image.png" class="vectorfreepik2" alt="imagen de freepik"/>
 	<div class="zonaColecciones">
 		<h1 class="tituloSeccion">Zocollections</h1>
 		<div class="coleccion1Div">
@@ -121,12 +132,28 @@ import Footer_component from '../components/Footer_component.astro';
 
 
 	<footer>
-		<img src="/public/zoco-logos-blanco.png" alt="Logo_zoco" class="logoFooter"/>
-		<div class="emailMarketing">
+		<div class="footerMarketing">
+			<img src="/public/zoco-logos-blanco.png" alt="Logo_zoco" class="logoFooter"/>
 			<p>Subscribe to our newsletter</p>
 			<input type="email" placeholder="Enter your email" />
 			<button>Subscribe</button>
-		
+		</div>
+		<div class="footerInfo">
+			<h3>INFO</h3>
+			<a href="/contact">CONTACT US</a>
+			<a href="/about">ABOUT</a>		
+			<a href="/faq">FAQ</a>
+		</div>
+		<div class="footerLegal">
+			<h3>CORPORATE</h3>
+			<a href="/privacy">PRIVACY POLICY</a>
+			<a href="/terms">TERMS OF SERVICE</a>
+			<a href="/cookies">COOKIES POLICY</a>
+		</div>
+		<div class="footerSocial">
+			<h3>FOLLOW US</h3>
+			<a href="#"><img src="/ig_logo.png" alt="Instagram"/></a>
+			<a href="#"><img src="/facebook_logo.png" alt="Facebook"/></a>
 		</div>
 	</footer>
 
